@@ -1,13 +1,13 @@
 # Retail Grading
 
-This repository is reserved for the WXL module `wxl-retail-grading`. The module currently lives in the WXL v1.1 integration checkout; this documentation PR contains **no source or release DLL**. Grading and shared-renderer edits are in progress, so source should be copied only after their API and lifecycle are pinned.
+`wxl-retail-grading` is a WarcraftXL client extension that applies a color-grade pass to the world at the world-to-UI boundary, leaving UI colors alone. It exposes tuning controls and uses the core render/event APIs, D3D9, shared ImGui, and environment support.
 
-## Integration and release checks
+## Build and installation
 
-The integrated module applies a color-grade pass to the world at the world-to-UI boundary, leaving UI colors alone, and exposes tuning controls. It needs matching WXL render/event APIs, D3D9 support, environment support, shared ImGui, and the intended grading cube data in the client. A DLL alone does not supply the cubes. Document exact client data paths, ownership, and hashes separately before packaging.
+Place this repository under the matching `wxl-core/extensions/wxl-retail-grading` path, configure the core for Win32, and build the `wxl-retail-grading` target. The source built in Release/Win32 against Furioz420/wxl-core `853217d7b0441e95eed2ba092f291dbd6626e6c9` on 2026-10-06. This is a source compatibility check, not a packaged DLL release or gameplay acceptance. The intended grading cube data must also be installed in the client; a DLL alone does not supply it.
 
-Once the renderer work is committed, add a pinned source snapshot and build Win32 against the matching core. Verify zone/time changes, enabled/disabled settings, UI color isolation, device reset, teleports, performance, and rollback without reducing HD output. Keep the PR draft until the exact package and runtime route pass. Roll back by closing the client and restoring the prior compatible DLL, core, and data set.
+Before publishing a binary, verify zone/time changes, enabled/disabled settings, UI color isolation, device reset, teleports, performance, and rollback without reducing HD output. Roll back by closing the client and restoring the prior compatible DLL, core, and data set.
 
 ## Credits and license
 
-Preserve WarcraftXL source notices and the GPL-3.0 license when source is added. Furioz's local integration changes remain attributed in the integration Git history. Game textures and grading assets remain with their respective owners and are not bundled here.
+Preserve WarcraftXL source notices and the GPL-3.0 license. Furioz's local integration changes are attributed in the Git history. Game textures and grading assets remain with their respective owners and are not bundled here.
